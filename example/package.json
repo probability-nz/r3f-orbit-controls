@@ -1,0 +1,39 @@
+{
+  "private": true,
+  "dependencies": {
+    "r3f-orbit-controls": "neftaly/r3f-orbit-controls",
+    "@react-three/drei": "^7.12.3",
+    "@react-three/fiber": "^7.0.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "three": "^0.132.2"
+  },
+  "devDependencies": {
+    "prettier": "^2.4.1",
+    "react-scripts": "4.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json}\""
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
