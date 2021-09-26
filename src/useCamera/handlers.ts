@@ -5,11 +5,14 @@ import { MathUtils, Vector2 } from 'three'
 const clampAngle = (angle: number) =>
   MathUtils.euclideanModulo(angle, Math.PI * 2)
 
+const handleMoveVector = new Vector2() // Reusable vector (to save on GC)
+const vector00 = new Vector2(0, 0)
 const handleMove =
   ({ deltaXY }: GesturestreamEventGesture) =>
   ({ origin: [oldX, y, oldZ], coords: [r, , phi] }: CameraState) => {
-    const screenXY = new Vector2(...deltaXY)
-      .rotateAround(new Vector2(0, 0), -phi) // Rotate screen X/Y coords to match camera rotation (note {x,y} is used instead of Vector2(x,y) to save on GC)
+    const screenXY = handleMoveVector
+      .set(...deltaXY)
+      .rotateAround(vector00, -phi) // Rotate screen X/Y coords to match camera rotation
       .toArray()
       .map((v: number) => (v * r) / 1000) // Move faster as we move out further
     const z = oldZ + screenXY[0]

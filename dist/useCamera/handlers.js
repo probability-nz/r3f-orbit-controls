@@ -2,9 +2,12 @@
 import { MathUtils, Vector2 } from 'three';
 // Keep angle between 0-2π rads
 const clampAngle = (angle) => MathUtils.euclideanModulo(angle, Math.PI * 2);
+const handleMoveVector = new Vector2(); // Reusable vector (to save on GC)
+const vector00 = new Vector2(0, 0);
 const handleMove = ({ deltaXY }) => ({ origin: [oldX, y, oldZ], coords: [r, , phi] }) => {
-    const screenXY = new Vector2(...deltaXY)
-        .rotateAround(new Vector2(0, 0), -phi) // Rotate screen X/Y coords to match camera rotation (note {x,y} is used instead of Vector2(x,y) to save on GC)
+    const screenXY = handleMoveVector
+        .set(...deltaXY)
+        .rotateAround(vector00, -phi) // Rotate screen X/Y coords to match camera rotation
         .toArray()
         .map((v) => (v * r) / 1000); // Move faster as we move out further
     const z = oldZ + screenXY[0];
