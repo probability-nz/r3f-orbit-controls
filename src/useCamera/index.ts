@@ -41,13 +41,9 @@ const useCamera = create((set, get) => ({
     )
   },
 
-  // origin/coords are set from initial state in a resetPosition call below
+  // origin/coords are set from initial state when OrbitCamera mounts
   origin: [0, 0, 0],
   coords: [0, 0, 0]
 }))
-
-// Set initial coords
-// @ts-ignore
-useCamera.getState().resetPosition()
 
 export default useCamera

@@ -24,6 +24,12 @@ const OrbitCamera = memo((props: PerspectiveCameraProps) => {
   const groupRef = useRef()
   const cameraRef = useRef()
 
+  // Set initial origin & coords
+  useEffect(() => {
+    ;(useCamera.getState() as any).resetPosition()
+  }, [])
+
+  // Update Three camera with Zustand subscription
   useEffect(() => {
     const update = ({
       // Target position

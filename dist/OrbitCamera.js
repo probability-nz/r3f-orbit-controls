@@ -8,6 +8,12 @@ const OrbitCamera = memo((props) => {
     const invalidate = useThree(s => s.invalidate);
     const groupRef = useRef();
     const cameraRef = useRef();
+    // Set initial origin & coords
+    useEffect(() => {
+        ;
+        useCamera.getState().resetPosition();
+    }, []);
+    // Update Three camera with Zustand subscription
     useEffect(() => {
         const update = ({ 
         // Target position
