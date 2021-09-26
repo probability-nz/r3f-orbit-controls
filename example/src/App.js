@@ -30,6 +30,21 @@ const Box = ({ color, ...props }) => (
   </mesh>
 )
 
+const Scene = () => (
+  <>
+    <ControlRig onGesture={onGesture} />
+    <OrbitCamera />
+    <ambientLight />
+    <mesh scale={10} rotation={[-Math.PI / 2, 0, 0]}>
+      <planeGeometry />
+      <meshStandardMaterial color="grey" />
+    </mesh>
+    <Box color="red" position={[0, 0.5, 0]} />
+    <Box color="blue" position={[1, 0.5, 0]} />
+    <Box color="green" position={[-1, 0.5, 0]} />
+  </>
+)
+
 const App = () => (
   <div>
     <Canvas
@@ -40,18 +55,8 @@ const App = () => (
         left: 0,
         top: 0
       }}
-    >
-      <ControlRig onGesture={onGesture} />
-      <OrbitCamera />
-      <ambientLight />
-      <mesh scale={10} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry />
-        <meshStandardMaterial color="grey" />
-      </mesh>
-      <Box color="red" position={[0, 0.5, 0]} />
-      <Box color="blue" position={[1, 0.5, 0]} />
-      <Box color="green" position={[-1, 0.5, 0]} />
-    </Canvas>
+      children={<Scene />}
+    />
     <Buttons
       style={{
         position: 'absolute',
