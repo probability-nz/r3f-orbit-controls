@@ -2,7 +2,7 @@
   "private": true,
   "dependencies": {
     "r3f-orbit-controls": "neftaly/r3f-orbit-controls",
-    "@react-three/drei": "^7.12.3",
+    "@react-three/drei": "^7.12.5",
     "@react-three/fiber": "^7.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
